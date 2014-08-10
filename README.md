@@ -42,10 +42,10 @@ So wherever you want to use it, use it, e.g., in an API endpoint:
 - MongoExhaust provides a function to wrap the data passed to the output of `to_bson`, specifically to do things such as add a `{"result" : "..."}` wrapper. If needed, override the `mongoexhaust.wrapper` function.
 - MongoExhaust respects references. If you provide your MongoEngine `Document` with a `_expand_fields` list containing `ReferenceField`s or `ListField` of `ReferenceField`s, these fields will be automatically expanded. For example:
 
-    class SuperModel(Document):
-        name = StringField()
-        photo_shoots = ReferenceField(PhotoShoot)
-        _expand_fields = ['photo_shoots']
+        class SuperModel(Document):
+            name = StringField()
+            photo_shoots = ReferenceField(PhotoShoot)
+            _expand_fields = ['photo_shoots']
 
 - To turn off the automatic expansion of reference fields on a per-call basis, use `Document.to_bson(expand=false)`
 
